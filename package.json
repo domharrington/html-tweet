@@ -1,0 +1,20 @@
+{
+  "name": "html-tweet",
+  "version": "0.0.0",
+  "description": "Convert a tweet into HTML, parsing out #hashtags, @mentions and http://links.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -r should"
+  },
+  "repository": "",
+  "author": "Dom Harrington <dom@harrington-mail.com>",
+  "license": "BSD",
+  "devDependencies": {
+    "mocha": "~1.8.2",
+    "should": "~1.2.2"
+  },
+  "dependencies": {
+    "twitter-text": "~1.6.1",
+    "lodash": "~1.0.1"
+  }
+}
