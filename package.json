@@ -1,6 +1,6 @@
 {
   "name": "html-tweet",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Convert a tweet into HTML, parsing out #hashtags, @mentions and http://links.com",
   "main": "index.js",
   "scripts": {
