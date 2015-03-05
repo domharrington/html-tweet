@@ -1,14 +1,19 @@
 module.exports = htmlTweet
 
 var twitterText = require('twitter-text')
-  , _ = require('lodash')
+  , extend = require('lodash.assign')
+  , template = require('lodash.template')
 
 function htmlTweet(options) {
-  options = _.extend(
+  options = extend(
     { hashtag: '<a href=\'#\'><%= hashtag %></a>'
     , mention: '<a href=\'#\'><%= mention %></a>'
     , url: '<a href=\'#\'><%= url %></a>'
     }, options)
+
+  var hashtagTemplate = template(options.hashtag)
+    , mentionTemplate = template(options.mention)
+    , urlTemplate = template(options.url)
 
   return function (tweet) {
     var hashtags = twitterText.extractHashtags(tweet)
@@ -18,20 +23,20 @@ function htmlTweet(options) {
     if (hashtags) {
       hashtags.forEach(function (hashtag) {
         hashtag = '#' + hashtag
-        tweet = tweet.replace(hashtag, _.template(options.hashtag, { hashtag: hashtag }))
+        tweet = tweet.replace(hashtag, hashtagTemplate({ hashtag: hashtag }))
       })
     }
 
     if (mentions) {
       mentions.forEach(function (mention) {
         mention = '@' + mention
-        tweet = tweet.replace(mention, _.template(options.mention, { mention: mention }))
+        tweet = tweet.replace(mention, mentionTemplate({ mention: mention }))
       })
     }
 
     if (urls) {
       urls.forEach(function (url) {
-        tweet = tweet.replace(url, _.template(options.url, { url: url }))
+        tweet = tweet.replace(url, urlTemplate({ url: url }))
       })
     }
 

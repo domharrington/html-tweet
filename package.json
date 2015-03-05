@@ -14,7 +14,8 @@
     "should": "~1.2.2"
   },
   "dependencies": {
-    "twitter-text": "~1.6.1",
-    "lodash": "~1.0.1"
+    "lodash.assign": "^3.0.0",
+    "lodash.template": "^3.3.0",
+    "twitter-text": "^1.11.0"
   }
 }
